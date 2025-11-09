@@ -1,0 +1,25 @@
+{
+  "image": "mcr.microsoft.com/devcontainers/base:jammy",
+  "features": {
+    "ghcr.io/devcontainers/features/node:1": {
+      "version": "24",
+      "installPnpm": true,
+      "installYarn": false
+    },
+    "ghcr.io/devcontainers/features/git:1": {
+      "version": "latest",
+      "installLFS": false
+    }
+  },
+  "remoteUser": "vscode",
+
+  "containerEnv": {
+    "PNPM_HOME": "/home/vscode/.local/share/pnpm"
+  },
+
+  "remoteEnv": {
+    "PATH": "/home/vscode/.local/share/pnpm:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+  },
+
+  "postCreateCommand": "sudo apt-get update && sudo apt-get install -y git-lfs && git lfs install && pnpm setup"
+}
